@@ -1,0 +1,32 @@
+.footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--glass-border);
+  margin-top: 4rem;
+  color: var(--text-secondary);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  margin-bottom: 3rem;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

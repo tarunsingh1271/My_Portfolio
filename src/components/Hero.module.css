@@ -1,0 +1,66 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.heroContent {
+  opacity: 0;
+}
+
+.greeting {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.name {
+  font-size: clamp(3rem, 8vw, 5rem);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.headline {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 600px;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.highlight {
+  font-weight: 600;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.socialContainer {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  color: var(--text-secondary);
+}
+
+.socialLink {
+  transition: color 0.3s;
+  color: inherit;
+}
+
+.socialLink:hover {
+  color: var(--text-primary);
+}

@@ -1,0 +1,126 @@
+.section {
+  padding: 8rem 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+  align-items: center;
+}
+
+.bioPanel {
+  padding: 3rem;
+}
+
+.bioText {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.bioTextLast {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.opportunitiesSection {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.opportunitiesTitle {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.opportunitiesText {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.tagIndigo {
+  padding: 0.5rem 1rem;
+  background: rgba(79, 70, 229, 0.1);
+  color: #a5b4fc;
+  border-radius: 9999px;
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.tagPink {
+  padding: 0.5rem 1rem;
+  background: rgba(236, 72, 153, 0.1);
+  color: #f9a8d4;
+  border-radius: 9999px;
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.tagGreen {
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.eduPanel {
+  padding: 2rem;
+}
+
+.eduPanelTitle {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.eduEntry {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 1.5rem;
+}
+
+.eduDegreeHighlight {
+  font-size: 1.1rem;
+  color: #ec4899;
+}
+
+.eduDegreePrimary {
+  font-size: 1.1rem;
+  color: #4f46e5;
+}
+
+.eduName {
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.eduMeta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.eduFocus {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}

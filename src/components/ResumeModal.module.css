@@ -1,0 +1,264 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal {
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 3rem;
+  position: relative;
+  background-color: var(--bg-primary);
+  text-align: left;
+}
+
+.actionButtons {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.iconButton {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  transition: var(--transition-smooth);
+}
+
+.iconButton:hover {
+  color: #ec4899;
+}
+
+/* ── Resume Content ── */
+
+.resumeContent {
+  font-family: var(--font-sans);
+  color: #f8fafc;
+  line-height: 1.6;
+  padding: 2rem;
+  background-color: #0f1115;
+}
+
+.resumeHeader {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+}
+
+.resumeName {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.resumeTitle {
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+}
+
+.resumeContact {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.resumeContactLink {
+  color: #94a3b8;
+}
+
+.resumeSection {
+  margin-bottom: 2rem;
+}
+
+.resumeSectionLast {
+  margin-bottom: 0;
+}
+
+.sectionHeading {
+  font-size: 1rem;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%) 1;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4f46e5;
+  font-family: var(--font-display);
+}
+
+.mutedText {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.bodyText {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* Experience */
+.expEntry {
+  margin-bottom: 1.5rem;
+}
+
+.expHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.expTitle {
+  font-size: 1rem;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.expMeta {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.expList {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+.expListItem {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: 0.3rem;
+}
+
+/* Education */
+.eduEntry {
+  margin-bottom: 1rem;
+}
+
+.eduHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.eduTitle {
+  font-size: 1rem;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.eduInstitution {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+.eduFocus {
+  color: #94a3b8;
+  font-size: 0.83rem;
+}
+
+/* Projects */
+.projEntry {
+  margin-bottom: 1.25rem;
+}
+
+.projHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.projTitle {
+  font-size: 1rem;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.projYear {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.projLink {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.projLinkText {
+  font-size: 0.8rem;
+}
+
+.projDescription {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.projTags {
+  color: #94a3b8;
+  font-size: 0.83rem;
+}
+
+/* Languages */
+.languagesRow {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.languageItem {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.languageStrong {
+  color: #e2e8f0;
+}
+
+/* Skill row */
+.skillEntry {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-bottom: 0.4rem;
+}
+
+.skillStrong {
+  color: #e2e8f0;
+}
