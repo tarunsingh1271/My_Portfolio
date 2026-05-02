@@ -1,26 +1,64 @@
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes dotGrid {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.4; }
+}
+
 .section {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle dot-grid background */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 40% 50%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 40% 50%, black 30%, transparent 75%);
+  animation: dotGrid 6s ease-in-out infinite;
 }
 
 .heroContent {
-  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* per-element staggered fade-in */
+.fadeIn {
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .greeting {
   font-size: 1.25rem;
-  color: var(--text-secondary);
   margin-bottom: 1rem;
   font-family: var(--font-display);
   letter-spacing: 0.05em;
+  opacity: 0;
 }
 
 .name {
   font-size: clamp(3rem, 8vw, 5rem);
   margin-bottom: 1rem;
   line-height: 1.1;
+  opacity: 0;
 }
 
 .headline {
@@ -28,6 +66,16 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  min-height: 1.3em;
+  opacity: 0;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 3px;
+  font-weight: 300;
+  color: #ec4899;
+  animation: blink 0.7s step-end infinite;
 }
 
 .description {
@@ -36,6 +84,7 @@
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
   line-height: 1.7;
+  opacity: 0;
 }
 
 .highlight {
@@ -47,6 +96,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
+  opacity: 0;
 }
 
 .socialContainer {
@@ -54,13 +104,20 @@
   gap: 1.5rem;
   margin-top: 3rem;
   color: var(--text-secondary);
+  opacity: 0;
 }
 
 .socialLink {
-  transition: color 0.3s;
+  transition: color 0.25s ease, transform 0.25s ease;
   color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .socialLink:hover {
-  color: var(--text-primary);
+  transform: translateY(-3px);
 }
+
+.socialGithub:hover  { color: #e2e8f0; }
+.socialLinkedin:hover { color: #0a66c2; }
+.socialEmail:hover    { color: #ec4899; }

@@ -1,18 +1,31 @@
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import styles from './About.module.css';
 
 const About = () => {
+  const [titleRef, titleVisible] = useScrollReveal();
+  const [bioRef, bioVisible] = useScrollReveal();
+  const [eduRef, eduVisible] = useScrollReveal();
+
   return (
     <section id="about" className={`section-container ${styles.section}`}>
-      <h2 className="section-title text-gradient">About Me</h2>
-      
+      <h2
+        ref={titleRef}
+        className={`section-title text-gradient reveal ${titleVisible ? 'visible' : ''}`}
+      >
+        About Me
+      </h2>
+
       <div className={styles.grid}>
-        <div className={`glass-panel ${styles.bioPanel}`}>
+        <div
+          ref={bioRef}
+          className={`glass-panel ${styles.bioPanel} reveal-left ${bioVisible ? 'visible' : ''}`}
+        >
           <p className={styles.bioText}>
-            My journey as a software engineer began with a deep fascination for how complex systems operate behind the scenes. 
+            My journey as a software engineer began with a deep fascination for how complex systems operate behind the scenes.
             Today, I specialize in <strong>Ruby on Rails</strong>, building secure, performant web services, and designing scalable cloud architectures.
           </p>
           <p className={styles.bioText}>
-            With a Master's degree in <strong>Cyber Security and Cloud Computing</strong> from École Supérieure d'Ingénieurs Léonard de Vinci in Paris, 
+            With a Master's degree in <strong>Cyber Security and Cloud Computing</strong> from École Supérieure d'Ingénieurs Léonard de Vinci in Paris,
             I bridge the gap between secure architectural design and rapid feature development.
           </p>
           <p className={styles.bioTextLast}>
@@ -31,18 +44,21 @@ const About = () => {
             </div>
           </div>
         </div>
-        
-        <div className={styles.sideColumn}>
+
+        <div
+          ref={eduRef}
+          className={`${styles.sideColumn} reveal-right ${eduVisible ? 'visible' : ''}`}
+        >
           <div className={`glass-panel ${styles.eduPanel}`}>
             <h3 className={styles.eduPanelTitle}>Education</h3>
-            
+
             <div className={styles.eduEntry}>
               <h4 className={styles.eduDegreeHighlight}>Master's Degree</h4>
               <p className={styles.eduName}>Cyber Security and Cloud Computing</p>
               <p className={styles.eduMeta}>École Supérieure d'Ingénieurs Léonard de Vinci • Paris, France</p>
               <p className={styles.eduFocus}>Focus: Cyber Risk, Network Arch, Cloud Orchestration, AI</p>
             </div>
-            
+
             <div>
               <h4 className={styles.eduDegreePrimary}>Bachelor's Degree</h4>
               <p className={styles.eduName}>Computer Applications</p>
