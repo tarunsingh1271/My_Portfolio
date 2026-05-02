@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight, FileText, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ResumeModal from './ResumeModal';
+import HeroIllustration from './HeroIllustration';
 import { heroHeadline, personalInfo } from '../data/portfolioData';
 import styles from './Hero.module.css';
 
@@ -33,47 +34,53 @@ const Hero = () => {
 
   return (
     <section id="home" className={`section-container ${styles.section}`}>
-      <div className={styles.heroContent}>
-        <h2 className={`text-gradient ${styles.greeting} ${isVisible ? styles.fadeIn : ''}`}>
-          Hi, my name is
-        </h2>
 
-        <h1 className={`${styles.name} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.15s' }}>
-          Tarun SINGH.
-        </h1>
+      {/* ── Full-screen background illustration ── */}
+      <HeroIllustration isVisible={isVisible} />
 
-        <h3 className={`${styles.headline} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.3s' }}>
-          {typedText}
-          {!typingDone && <span className={styles.cursor} aria-hidden="true">|</span>}
-        </h3>
+      <div className={styles.inner}>
+        <div className={styles.heroContent}>
+          <h2 className={`text-gradient ${styles.greeting} ${isVisible ? styles.fadeIn : ''}`}>
+            Hi, my name is
+          </h2>
 
-        <p className={`${styles.description} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.45s' }}>
-          I am a Software Engineer specializing in{' '}
-          <span className={`text-gradient ${styles.highlight}`}>backend architecture</span>,{' '}
-          <span className={`text-gradient ${styles.highlight}`}>system reliability</span>, and{' '}
-          <span className={`text-gradient ${styles.highlight}`}>cloud orchestration</span>.{' '}
-          Passionate about automation, building resilient infrastructure, and bridging the gap between development and operations.
-        </p>
+          <h1 className={`${styles.name} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.15s' }}>
+            Tarun SINGH.
+          </h1>
 
-        <div className={`${styles.buttonContainer} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.6s' }}>
-          <a href="#projects" className="btn-primary">
-            View My Work <ArrowRight size={20} />
-          </a>
-          <button onClick={() => setIsModalOpen(true)} className="btn-secondary">
-            <FileText size={20} /> View Resume
-          </button>
-        </div>
+          <h3 className={`${styles.headline} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.3s' }}>
+            {typedText}
+            {!typingDone && <span className={styles.cursor} aria-hidden="true">|</span>}
+          </h3>
 
-        <div className={`${styles.socialContainer} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.75s' }}>
-          <a href={personalInfo.github} target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialGithub}`}>
-            <FaGithub size={26} />
-          </a>
-          <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkedin}`}>
-            <FaLinkedin size={26} />
-          </a>
-          <a href={`mailto:${personalInfo.email}`} className={`${styles.socialLink} ${styles.socialEmail}`}>
-            <Mail size={26} />
-          </a>
+          <p className={`${styles.description} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.45s' }}>
+            I am a Software Engineer specializing in{' '}
+            <span className={`text-gradient ${styles.highlight}`}>backend architecture</span>,{' '}
+            <span className={`text-gradient ${styles.highlight}`}>system reliability</span>, and{' '}
+            <span className={`text-gradient ${styles.highlight}`}>cloud orchestration</span>.{' '}
+            Passionate about automation, building resilient infrastructure, and bridging the gap between development and operations.
+          </p>
+
+          <div className={`${styles.buttonContainer} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.6s' }}>
+            <a href="#projects" className="btn-primary">
+              View My Work <ArrowRight size={20} />
+            </a>
+            <button onClick={() => setIsModalOpen(true)} className="btn-secondary">
+              <FileText size={20} /> View Resume
+            </button>
+          </div>
+
+          <div className={`${styles.socialContainer} ${isVisible ? styles.fadeIn : ''}`} style={{ animationDelay: '0.75s' }}>
+            <a href={personalInfo.github} target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialGithub}`}>
+              <FaGithub size={26} />
+            </a>
+            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkedin}`}>
+              <FaLinkedin size={26} />
+            </a>
+            <a href={`mailto:${personalInfo.email}`} className={`${styles.socialLink} ${styles.socialEmail}`}>
+              <Mail size={26} />
+            </a>
+          </div>
         </div>
       </div>
 

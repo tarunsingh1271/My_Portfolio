@@ -1,0 +1,68 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
+/* Full-screen background wrapper */
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+.bgSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.fadeIn {
+  animation: fadeIn 1.4s ease 0.3s both;
+}
+
+/* Floating groups */
+.floatSlow {
+  animation: floatY 6s ease-in-out infinite;
+}
+.floatMid {
+  animation: floatY 4.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+.floatFast {
+  animation: floatY 3.8s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+/* Cursors */
+.editorCursor {
+  animation: blink 1s step-end infinite;
+}
+.termCursor {
+  animation: blink 0.85s step-end infinite;
+  animation-delay: 0.3s;
+}
+
+/* Pulsing dot */
+.pulse {
+  animation: pulseDot 2.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}

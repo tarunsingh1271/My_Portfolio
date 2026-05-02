@@ -14,6 +14,7 @@
   100% { opacity: 0.4; }
 }
 
+/* ── Section wrapper ── */
 .section {
   min-height: 100vh;
   display: flex;
@@ -23,7 +24,7 @@
   overflow: hidden;
 }
 
-/* subtle dot-grid background */
+/* Subtle dot-grid background fading from the left */
 .section::before {
   content: '';
   position: absolute;
@@ -31,14 +32,32 @@
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   background-size: 44px 44px;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse at 40% 50%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at 40% 50%, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 70%);
   animation: dotGrid 6s ease-in-out infinite;
 }
 
-.heroContent {
+/* ── Single-column layout (illustration is now a bg layer) ── */
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 680px;
   position: relative;
   z-index: 1;
+}
+
+/* ── Left: text ── */
+.heroContent {
+  position: relative;
+}
+
+/* ── Right: illustration ── */
+.illustrationCol {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /* per-element staggered fade-in */
@@ -55,14 +74,14 @@
 }
 
 .name {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   margin-bottom: 1rem;
   line-height: 1.1;
   opacity: 0;
 }
 
 .headline {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -79,8 +98,8 @@
 }
 
 .description {
-  max-width: 600px;
-  font-size: 1.125rem;
+  max-width: 540px;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
   line-height: 1.7;
@@ -118,6 +137,35 @@
   transform: translateY(-3px);
 }
 
-.socialGithub:hover  { color: #e2e8f0; }
+.socialGithub:hover   { color: #e2e8f0; }
 .socialLinkedin:hover { color: #0a66c2; }
 .socialEmail:hover    { color: #ec4899; }
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .illustrationCol {
+    justify-content: center;
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .name {
+    font-size: clamp(2.8rem, 8vw, 4rem);
+  }
+
+  .headline {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .illustrationCol {
+    display: none;
+  }
+}
