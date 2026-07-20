@@ -20,7 +20,7 @@ export const useScrollReveal = (options = {}) => {
 
     observer.observe(el);
     return () => observer.unobserve(el);
-  }, []);
+  }, [options]);
 
   return [ref, isVisible];
 };
