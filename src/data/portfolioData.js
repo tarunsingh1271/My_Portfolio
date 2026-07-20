@@ -26,7 +26,7 @@ export const summary =
 export const experiences =
   [
     {
-      role: "Full stack Engineer",
+      role: "Cloud and DevOpsEngineer",
       company: "RGIS SPÉCIALISTES EN INVENTAIRE",
       location: "Paris, France",
       period: "12/2024 – Present",
@@ -38,7 +38,7 @@ export const experiences =
       ],
     },
     {
-      role: "Full Stack Engineer Intern",
+      role: "DevOps Engineer Intern",
       company: "Qubit Pharmaceuticals",
       location: "Paris, France",
       period: "04/2024 – 09/2024",
@@ -50,7 +50,7 @@ export const experiences =
       ],
     },
     {
-      role: "Back-end Development Intern",
+      role: "Software Engineer Intern",
       company: "Fluwid Technologies",
       location: "India",
       period: "03/2023 – 08/2023",
@@ -73,23 +73,36 @@ export const experiences =
     },
   ];
 
+// ── About Me ─────────────────────────────────
+export const about = {
+  bio: [
+    `My journey as a software engineer began with a deep fascination for how complex systems operate behind the scenes. Today, I specialize in <strong>Ruby on Rails</strong>, building secure, performant web services, and designing scalable cloud architectures.`,
+    `With a Master's degree in <strong>Cyber Security and Cloud Computing</strong> from École Supérieure d'Ingénieurs Léonard de Vinci in Paris, I bridge the gap between secure architectural design and rapid feature development.`,
+    `I thrive in remote, asynchronous engineering environments where clean code, comprehensive testing (RSpec), and system reliability are paramount.`,
+  ],
+  opportunities: {
+    title: 'Open to Opportunities',
+    text: "I'm always open to exciting challenges. I welcome spontaneous applications and am actively exploring roles such as:",
+    tags: ['Site Reliability Engineer (SRE)', 'DevOps Engineer', 'Software Developer'],
+    tagColors: ['tagIndigo', 'tagPink', 'tagGreen'],
+  },
+};
+
 // ── Education ────────────────────────────────
 export const education = [
   {
     degree: "Master's Degree",
+    degreeType: 'highlight',
     field: "Cyber Security and Cloud Computing",
-    institution: "École Supérieure d'Ingénieurs Léonard de Vinci",
-    location: "Paris, France",
-    focus: "Cyber Risk Management, Network Architecture, Cloud Orchestration, Neural Networks & AI",
-    color: "#ec4899",
+    institution: "École Supérieure d'Ingénieurs Léonard de Vinci • Paris, France",
+    focus: "Focus: Cyber Risk, Network Arch, Cloud Orchestration, AI",
   },
   {
     degree: "Bachelor's Degree",
+    degreeType: 'primary',
     field: "Computer Applications",
-    institution: "Chandigarh University",
-    location: "India",
-    focus: "Data Structures, Web Design, OOP, Software Engineering",
-    color: "#4f46e5",
+    institution: "Chandigarh University • India",
+    focus: "Focus: Data Structures, Web Design, OOP",
   },
 ];
 
