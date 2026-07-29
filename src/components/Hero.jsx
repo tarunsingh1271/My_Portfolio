@@ -3,7 +3,7 @@ import { ArrowRight, FileText, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import ResumeModal from './ResumeModal';
 import HeroIllustration from './HeroIllustration';
-import { heroHeadline, personalInfo } from '../data/portfolioData';
+import { gmailComposeUrl, heroHeadline, personalInfo } from '../data/portfolioData';
 import styles from './Hero.module.css';
 
 const Hero = () => {
@@ -31,6 +31,11 @@ const Hero = () => {
     }, 38);
     return () => clearInterval(interval);
   }, [isVisible]);
+
+  const handleEmailClick = (event) => {
+    event.preventDefault();
+    window.open(gmailComposeUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="home" className={`section-container ${styles.section}`}>
@@ -77,7 +82,13 @@ const Hero = () => {
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkedin}`}>
               <FaLinkedin size={26} />
             </a>
-            <a href={`mailto:${personalInfo.email}`} className={`${styles.socialLink} ${styles.socialEmail}`}>
+            <a
+              href={gmailComposeUrl}
+              className={`${styles.socialLink} ${styles.socialEmail}`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleEmailClick}
+            >
               <Mail size={26} />
             </a>
           </div>

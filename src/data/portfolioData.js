@@ -15,6 +15,9 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/tarunsingh1271/",
 };
 
+export const contactSubject = "we would like to get in touch";
+export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}&su=${encodeURIComponent(contactSubject)}`;
+
 // ── Hero / Summary ───────────────────────────
 export const heroHeadline = "I build scalable systems & robust architectures.";
 
