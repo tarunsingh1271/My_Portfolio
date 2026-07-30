@@ -1,25 +1,49 @@
 @keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes dotGrid {
-  0%   { opacity: 0.4; }
-  50%  { opacity: 0.7; }
-  100% { opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
 }
 
 /* ── Section wrapper ── */
 .section {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding-top: 8rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 7.5rem;
+  padding-bottom: 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -37,26 +61,29 @@
   animation: dotGrid 6s ease-in-out infinite;
 }
 
-/* ── Split hero layout with a richer visual panel ── */
+.skillsMarqueeWrapper {
+  width: calc(100% + (2 * clamp(1.25rem, 3vw, 3rem)));
+  margin-left: calc(-1 * clamp(1.25rem, 3vw, 3rem));
+  margin-right: calc(-1 * clamp(1.25rem, 3vw, 3rem));
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Single column hero layout ── */
 .inner {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  max-width: none;
+  max-width: 1100px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 2rem;
-  align-items: center;
-  width: 100%;
-}
-
 .heroContent {
-  position: relative;
+  width: 100%;
+  max-width: 860px;
 }
 
 .eyebrow {
@@ -78,8 +105,8 @@
   position: relative;
   padding: 1rem;
   border-radius: 24px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(16px);
   overflow: hidden;
@@ -107,7 +134,7 @@
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .panelBody {
@@ -138,7 +165,7 @@
   padding: 0.9rem 1rem;
   border-radius: 14px;
   background: rgba(10, 14, 24, 0.45);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .panelItemLabel {
@@ -212,7 +239,7 @@
 }
 
 .description {
-  max-width: 540px;
+  max-width: 700px;
   font-size: 1.05rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
@@ -231,9 +258,9 @@
 .metaPill {
   padding: 0.55rem 0.8rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: #e2e8f0;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.9rem;
 }
 
@@ -268,9 +295,17 @@
   transform: translateY(-3px);
 }
 
-.socialGithub:hover   { color: #e2e8f0; }
-.socialLinkedin:hover { color: #0a66c2; }
-.socialEmail:hover    { color: #ec4899; }
+.socialGithub:hover {
+  color: #e2e8f0;
+}
+
+.socialLinkedin:hover {
+  color: #0a66c2;
+}
+
+.socialEmail:hover {
+  color: #ec4899;
+}
 
 /* ── Responsive ── */
 @keyframes panelRise {
@@ -278,6 +313,7 @@
     opacity: 0;
     transform: translateY(18px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
