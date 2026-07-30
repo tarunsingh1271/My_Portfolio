@@ -1,40 +1,30 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { skillCategories } from '../data/portfolioData';
 import styles from './Skills.module.css';
 
 const Skills = () => {
-  const [titleRef, titleVisible] = useScrollReveal();
-  const [gridRef, gridVisible] = useScrollReveal();
+  const [trackRef, trackVisible] = useScrollReveal();
+
+  const steps = ['code', 'build', 'test', 'deploy', 'production'];
 
   return (
-    <section id="skills" className={`section-container ${styles.section}`}>
-      <h2
-        ref={titleRef}
-        className={`section-title text-gradient reveal ${titleVisible ? 'visible' : ''}`}
-      >
-        Technical Skills
-      </h2>
-
-      <div ref={gridRef} className={styles.grid}>
-        {skillCategories.map((category, index) => (
-          <div
-            key={index}
-            className={`glass-panel ${styles.categoryPanel} reveal stagger-${index + 1} ${gridVisible ? 'visible' : ''}`}
-          >
-            <h3 className={styles.categoryTitle}>
-              {category.title}
-            </h3>
-            <div className={styles.skillsRow}>
-              {category.skills.map((skill, idx) => (
-                <span key={idx} className={styles.skillTag}>
-                  {skill}
-                </span>
-              ))}
-            </div>
+    <div id="skills" className={styles.inlineStrip}>
+      <div ref={trackRef} className={`${styles.pipelineShell} reveal reveal-right ${trackVisible ? 'visible' : ''}`}>
+        <div className={styles.pipelineTrack} aria-label="Code to production pipeline">
+          <div className={styles.pipelineRail} aria-hidden="true">
+            <span className={styles.pipelineGlow} />
           </div>
-        ))}
+
+          <div className={styles.stepRow}>
+            {steps.map((step, index) => (
+              <div key={step} className={styles.step} style={{ '--step-index': index }}>
+                <span className={styles.stepDot} aria-hidden="true" />
+                <span className={styles.stepLabel}>{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

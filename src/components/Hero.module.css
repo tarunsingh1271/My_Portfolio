@@ -37,20 +37,134 @@
   animation: dotGrid 6s ease-in-out infinite;
 }
 
-/* ── Single-column layout (illustration is now a bg layer) ── */
+/* ── Split hero layout with a richer visual panel ── */
 .inner {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 680px;
+  max-width: none;
   position: relative;
   z-index: 1;
 }
 
-/* ── Left: text ── */
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
 .heroContent {
   position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(12px);
+}
+
+.panel {
+  position: relative;
+  padding: 1rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.2), transparent 60%);
+  pointer-events: none;
+}
+
+.panelReveal {
+  animation: panelRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.panelHeader {
+  display: flex;
+  gap: 0.4rem;
+  padding-bottom: 0.8rem;
+}
+
+.panelDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+}
+
+.panelBody {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panelLabel {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+}
+
+.panelList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panelItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  background: rgba(10, 14, 24, 0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.panelItemLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.panelItemValue {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.statusPill {
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.18);
+  color: #d8d8ff;
+  font-size: 0.85rem;
+  border: 1px solid rgba(129, 140, 248, 0.24);
 }
 
 /* ── Right: illustration ── */
@@ -101,9 +215,26 @@
   max-width: 540px;
   font-size: 1.05rem;
   color: var(--text-secondary);
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   line-height: 1.7;
   opacity: 0;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+}
+
+.metaPill {
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
 }
 
 .highlight {
@@ -142,8 +273,19 @@
 .socialEmail:hover    { color: #ec4899; }
 
 /* ── Responsive ── */
+@keyframes panelRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 960px) {
-  .inner {
+  .heroGrid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
@@ -167,5 +309,9 @@
 @media (max-width: 640px) {
   .illustrationCol {
     display: none;
+  }
+
+  .panel {
+    padding: 0.9rem;
   }
 }
