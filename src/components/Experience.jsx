@@ -1,69 +1,80 @@
-import { Briefcase, MapPin, Calendar } from 'lucide-react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { experiences } from '../data/portfolioData';
-import styles from './Experience.module.css';
+import { experiences, impactStats } from '../data/portfolioData';
 
-const Experience = () => {
-  const [titleRef, titleVisible] = useScrollReveal();
-  const [timelineRef, timelineVisible] = useScrollReveal();
-
+export default function Experience() {
   return (
-    <section id="experience" className={`section-container ${styles.section}`}>
-      <h2
-        ref={titleRef}
-        className={`section-title text-gradient reveal ${titleVisible ? 'visible' : ''}`}
-      >
-        Work Experience
-      </h2>
+    <section className="section" id="experience">
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">
+            <span className="idx">02</span> git log :: CAREER RELEASES
+          </div>
+          <h2>Production releases and engineering history.</h2>
+        </div>
 
-      <div ref={timelineRef} className={styles.timelineWrapper}>
-        <div className={styles.verticalSpine} />
-
-        {experiences.map((exp, index) => {
-          const isLeft = index % 2 === 0;
-          return (
+        {/* Timeline */}
+        <div className="timeline is-visible">
+          {experiences.map((exp) => (
             <div
-              key={index}
-              className={`${styles.timelineItem} ${isLeft ? styles.timelineItemLeft : styles.timelineItemRight} reveal stagger-${index + 1} ${timelineVisible ? 'visible' : ''}`}
+              key={exp.tag}
+              className={`release ${exp.isCurrent ? '' : 'release--past'} is-visible`}
             >
-              <div className={`glass-panel ${styles.card}`}>
-                <div className={`${styles.connector} ${isLeft ? styles.connectorLeft : styles.connectorRight}`} />
+              <div className="release__aside">
+                <span className="release__tag">{exp.tag}</span>
+                <div className="release__co">{exp.company}</div>
+                <div className="release__period">{exp.period} • {exp.location}</div>
+              </div>
 
-                <div style={{ marginBottom: '1rem' }}>
-                  <h3 className={styles.role}>{exp.role}</h3>
-                  <h4 className={styles.company}>{exp.company}</h4>
+              <div className="release__main">
+                <div className="release__role">
+                  {exp.role}
+                  {exp.isCurrent && <span className="now">ACTIVE RELEASE</span>}
                 </div>
 
-                <div className={styles.meta}>
-                  <span className={styles.metaItem}>
-                    <MapPin size={12} /> {exp.location}
-                  </span>
-                </div>
-
-                <ul className={styles.highlights}>
-                  {exp.highlights.map((point, idx) => (
-                    <li key={idx} className={styles.highlightItem}>
-                      {point}
+                <ul className="release__sum">
+                  {exp.highlights.map((item, idx) => (
+                    <li key={idx} style={{ marginBottom: '0.5rem', listStyleType: 'none' }}>
+                      <span className="text-accent" style={{ marginRight: '0.5rem' }}>▸</span>
+                      {item}
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              <div className={`${styles.yearContainer} ${isLeft ? styles.yearContainerLeft : styles.yearContainerRight}`}>
-                <div className={styles.yearPill}>
-                  <Calendar size={16} color="#ec4899" /> {exp.period}
+                <div className="release__chips">
+                  {exp.chips.map((chip) => (
+                    <span key={chip} className="kchip">
+                      <span className="d" />
+                      {chip}
+                    </span>
+                  ))}
                 </div>
               </div>
-
-              <div className={styles.centreDot}>
-                <Briefcase size={18} />
-              </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* git diff --stat Impact Grid */}
+        <div className="impact-strip">
+          <div className="eyebrow">
+            <span className="idx">02a</span> git diff --stat :: QUANTITATIVE IMPACT
+          </div>
+          <h3 className="impact-title">Engineering metrics in numbers</h3>
+          <p className="impact-sub">
+            Measurable operational improvements across infrastructure automation, build speeds, and database performance.
+          </p>
+
+          <div className="impact-grid">
+            {impactStats.map((stat, idx) => (
+              <div key={idx} className="impact-stat">
+                <span className="impact-stat__n">
+                  {stat.val}
+                  {stat.unit && <span>{stat.unit}</span>}
+                </span>
+                <span className="impact-stat__l">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Experience;
+}

@@ -1,99 +1,115 @@
-import { useMemo } from 'react';
-import {
-  SiRuby,
-  SiPython,
-  SiJavascript,
-  SiTypescript,
-  SiCplusplus,
-  SiRubyonrails,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiDotnet,
-  SiGraphql,
-  SiDocker,
-  SiKubernetes,
-  SiGitlab,
-  SiPostgresql,
-  SiElasticsearch,
-  SiGithub,
-  SiSlack,
-  SiFigma,
-  SiHtml5,
-  SiJsonwebtokens,
-} from 'react-icons/si';
-import { FaJava, FaVial, FaCss3Alt, FaAws, FaDatabase, FaKey, FaSync, FaCode } from 'react-icons/fa';
-import { VscAzure } from 'react-icons/vsc';
-import { TbApi } from 'react-icons/tb';
+import { useState } from 'react';
+import { stackYamlCode, stackCards } from '../data/portfolioData';
 
-import { skillCategories } from '../data/portfolioData';
-import styles from './Skills.module.css';
+export default function Skills() {
+  const [activeCardKey, setActiveCardKey] = useState(null);
+  const [hoveredLineNo, setHoveredLineNo] = useState(null);
 
-const ICON_MAP = {
-  Ruby: SiRuby,
-  Python: SiPython,
-  JavaScript: SiJavascript,
-  TypeScript: SiTypescript,
-  Java: FaJava,
-  'C/C++': SiCplusplus,
-  'Ruby on Rails': SiRubyonrails,
-  RSpec: FaVial,
-  'React.js': SiReact,
-  'Next.js': SiNextdotjs,
-  'Node.js': SiNodedotjs,
-  '.NET': SiDotnet,
-  GraphQL: SiGraphql,
-  'REST APIs': TbApi,
-  HTML: SiHtml5,
-  CSS: FaCss3Alt,
-  JWT: SiJsonwebtokens,
-  OAuth: FaKey,
-  AWS: FaAws,
-  Azure: VscAzure,
-  Docker: SiDocker,
-  Kubernetes: SiKubernetes,
-  'GitLab CI/CD': SiGitlab,
-  PostgreSQL: SiPostgresql,
-  NoSQL: FaDatabase,
-  Elasticsearch: SiElasticsearch,
-  GitLab: SiGitlab,
-  GitHub: SiGithub,
-  Slack: SiSlack,
-  Figma: SiFigma,
-  'Agile/Scrum': FaSync,
-};
+  const lines = stackYamlCode.split('\n');
 
-const Skills = () => {
-  const uniqueSkills = useMemo(() => {
-    const rawSkills = skillCategories.flatMap((cat) => cat.skills);
-    return Array.from(new Set(rawSkills));
-  }, []);
+  const getHotCardKeyForLine = (lineNo) => {
+    const card = stackCards.find((c) => c.hotLines.includes(lineNo));
+    return card ? card.key : null;
+  };
 
-  // Double the list for seamless infinite looping animation
-  const marqueeItems = [...uniqueSkills, ...uniqueSkills];
+  const isLineHot = (lineNo) => {
+    if (activeCardKey) {
+      const card = stackCards.find((c) => c.key === activeCardKey);
+      return card ? card.hotLines.includes(lineNo) : false;
+    }
+    return hoveredLineNo === lineNo;
+  };
 
   return (
-    <div id="skills" className={styles.skillsMarqueeSection}>
-      <div className={styles.headerLabel}>
-        <span className={styles.promptSymbol}>&gt;</span> tech stack &amp; skills
-      </div>
+    <section className="section" id="skills">
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">
+            <span className="idx">03</span> cat stack.yaml :: TOOLCHAIN & SPECIFICATION
+          </div>
+          <h2>Ecosystem specification and infrastructure stack.</h2>
+        </div>
 
-      <div className={styles.marqueeContainer}>
-        <div className={styles.marqueeTrack}>
-          {marqueeItems.map((skill, idx) => {
-            const IconComponent = ICON_MAP[skill] || FaCode;
-            return (
-              <div key={`${skill}-${idx}`} className={styles.skillCard}>
-                <IconComponent className={styles.skillIcon} aria-hidden="true" />
-                <span className={styles.skillName}>{skill}</span>
+        <div className="stack-stage">
+          <div className="stack-stage__copy">
+            <span className="stack-stage__label">SPECIFICATION :: ACTIVE</span>
+            <p>
+              Hover over a stack component below to highlight its corresponding infrastructure definition in the YAML file, or hover lines in the code view.
+            </p>
+          </div>
+
+          <div className="stack-stage__surface">
+            <figure className={`spec spec--peek ${activeCardKey ? 'is-linking' : ''}`}>
+              <div className="spec__scan" />
+              <figcaption>
+                <span className="d" />
+                <span className="path">/etc/tarun/stack.yaml</span>
+                <span className="spec__hint">hover component to inspect spec</span>
+              </figcaption>
+
+              <div className="spec__mask">
+                <pre>
+                  <code>
+                    {lines.map((lineText, idx) => {
+                      const lineNo = idx + 1;
+                      const hot = isLineHot(lineNo);
+                      return (
+                        <div
+                          key={lineNo}
+                          className={`ln ${hot ? 'is-hot' : ''}`}
+                          onMouseEnter={() => {
+                            setHoveredLineNo(lineNo);
+                            const cardKey = getHotCardKeyForLine(lineNo);
+                            if (cardKey) setActiveCardKey(cardKey);
+                          }}
+                          onMouseLeave={() => {
+                            setHoveredLineNo(null);
+                            setActiveCardKey(null);
+                          }}
+                        >
+                          <span className="no">{lineNo}</span>
+                          <span>
+                            {lineText.startsWith('#') ? (
+                              <span className="c">{lineText}</span>
+                            ) : lineText.includes(':') ? (
+                              <>
+                                <span className="k">{lineText.split(':')[0]}:</span>
+                                <span className="v">{lineText.substring(lineText.indexOf(':') + 1)}</span>
+                              </>
+                            ) : (
+                              <span className="p">{lineText}</span>
+                            )}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </code>
+                </pre>
               </div>
-            );
-          })}
+            </figure>
+
+            {/* Interactive Stack Cards */}
+            <div className="stack-cards">
+              {stackCards.map((card) => {
+                const isHot = activeCardKey === card.key;
+                return (
+                  <div
+                    key={card.key}
+                    className={`stack-card ${isHot ? 'is-hot' : ''}`}
+                    onMouseEnter={() => setActiveCardKey(card.key)}
+                    onMouseLeave={() => setActiveCardKey(null)}
+                    data-cursor="inspect card"
+                  >
+                    <div className="stack-card__k">{card.key}</div>
+                    <strong>{card.name}</strong>
+                    <p>{card.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Skills;
-
+}

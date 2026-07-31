@@ -1,10 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
+    <title>Tarun Singh | Cloud & DevOps Engineer — SRE</title>
+    <meta name="description" content="Tarun Singh — Cloud & DevOps Engineer specializing in AWS, Kubernetes (EKS), Terraform IaC, GitLab CI/CD, and system reliability based in Paris, France." />
+    <meta name="keywords" content="Tarun Singh, Cloud Engineer, DevOps Engineer, Site Reliability Engineer, SRE, AWS, Kubernetes, EKS, Terraform, GitLab CI/CD, Paris DevOps" />
+    <meta name="author" content="Tarun Singh" />
+    <meta name="theme-color" content="#08090b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+    <link rel="shortcut icon" href="/favicon.svg?v=3" />
+    <link rel="apple-touch-icon" href="/favicon.svg?v=3" />
+
+    <!-- Theme boot script before paint -->
+    <script>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+
+    <!-- Preload fonts -->
+    <link rel="preload" href="/fonts/space-grotesk-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-var.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>
