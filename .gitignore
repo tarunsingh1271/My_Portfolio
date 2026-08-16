@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Local portfolio content (kept on your machine)
-src/data/portfolioData.local.js
+src/data/portfolioData.js
