@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local portfolio content (kept on your machine)
+src/data/portfolioData.js
