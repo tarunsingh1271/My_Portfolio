@@ -21,7 +21,7 @@ export const personalInfo = {
   resumePdf: "/Tarun_Singh_CV.pdf"
 };
 
-export const contactSubject = "we would like to get in touch";
+export const contactSubject = "We would like to get in touch";
 export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}&su=${encodeURIComponent(contactSubject)}`;
 
 // ── Dynamic Hero Phrases ─────────────────────
@@ -69,9 +69,9 @@ export const principles = [
 export const experiences = [
   {
     tag: "release/2024.12 — HEAD",
-    company: "RGIS SPÉCIALISTES EN INVENTAIRE",
+    company: "Infosys France",
     role: "Cloud and DevOps Engineer",
-    period: "12/2024 – Present",
+    period: "11/2024 – Present",
     location: "Paris, France",
     isCurrent: true,
     highlights: [
@@ -189,13 +189,13 @@ export const stackCards = [
 // ── Projects ──────────────────────────────────
 export const projects = [
   {
-    title: "Multi-Region AWS IaC Architecture",
+    title: "opentelemetry-observability-home-lab",
     tag: "cloud / iac-architecture",
     year: "2026",
     description:
-      "Engineered a high-availability, multi-region AWS environment incorporating VPC Peering, Route 53 Latency Routing, and RDS Aurora Global Database using modular Terraform IaC.",
+      "Welcome to my OpenTelemetry Observability Home Lab! This project provides a complete, locally deployable observability ecosystem built with Docker Compose. It demonstrates end-to-end telemetry pipelines—capturing distributed traces, metrics, and application performance data with zero cloud costs..",
     chips: ["AWS", "Terraform", "Route 53", "RDS Aurora", "IaC"],
-    links: { github: "https://github.com/tarunsingh1271", live: "#" }
+    links: { github: "https://github.com/tarunsingh1271/opentelemetry-observability-home-lab", live: "#" }
   },
   {
     title: "DevSecOps Automated Security & SAST Pipeline",
