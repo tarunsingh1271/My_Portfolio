@@ -14,9 +14,9 @@ export default function Projects() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">
-            <span className="idx">04</span> proof :: PROVEN ARCHITECTURES & PROJECTS
+            <span className="idx">04</span> docker images :: PROVEN ARCHITECTURES
           </div>
-          <h2>Featured engineering projects and system implementations.</h2>
+          <h2>Containerized workloads and resilient platform implementations.</h2>
         </div>
 
         <div className="awards3">
