@@ -64,10 +64,10 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { href: '#whoami', label: 'whoami' },
-    { href: '#experience', label: 'git log' },
-    { href: '#skills', label: 'stack.yaml' },
-    { href: '#projects', label: 'proof' },
+    { href: '#whoami', label: 'profile' },
+    { href: '#experience', label: 'releases' },
+    { href: '#skills', label: 'platform' },
+    { href: '#projects', label: 'workloads' },
     { href: '#education', label: 'education' },
     { href: '#contact', label: 'ping' }
   ];

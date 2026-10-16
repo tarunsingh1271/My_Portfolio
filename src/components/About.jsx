@@ -37,9 +37,9 @@ export default function About() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">
-            <span className="idx">01</span> whoami :: IDENTITY & MANIFESTO
+            <span className="idx">01</span> kubectl describe :: ENGINEER
           </div>
-          <h2>Building automated, unbreakable cloud delivery systems.</h2>
+          <h2>Production infrastructure for teams that need to ship with confidence.</h2>
         </div>
 
         <div className="about__grid">

@@ -17,7 +17,7 @@ export const personalInfo = {
   uptime: "99.99%",
   latDeg: "48.8566° N",
   lonDeg: "2.3522° E",
-  profilePhoto: "/req/img/profile.png",
+  profilePhoto: "/dp.jpg",
   resumePdf: "/Tarun_Singh_CV.pdf"
 };
 
@@ -41,7 +41,7 @@ export const summary =
 
 // ── About Bio & Manifesto ────────────────────
 export const aboutBio = {
-  lead: "My engineering journey is driven by a deep fascination with how complex systems scale under pressure.",
+  lead: "My engineering journey Started in 2018, driven by a deep fascination with how complex systems scale under pressure.",
   p1: "I bridge the gap between secure architectural design and continuous delivery. My core focus centers on AWS cloud infrastructure, Kubernetes container orchestration (EKS), and Terraform IaC.",
   p2: "Holding a Master's degree in Cyber Security and Cloud Computing from École Supérieure d'Ingénieurs Léonard de Vinci (ESILV) in Paris, I specialize in building resilient GitLab CI/CD pipelines, enforcing zero-trust security controls, and eliminating manual toil."
 };
@@ -68,10 +68,23 @@ export const principles = [
 // ── Work Experiences (`git log --career`) ────
 export const experiences = [
   {
-    tag: "release/2024.12 — HEAD",
-    company: "Infosys France",
+    tag: "release/2024.6 — HEAD",
+    company: "RGIS France",
+    role: "",
+    period: "11/2023 – Present",
+    duration: "2 years 11 months",
+    location: "Paris, France",
+    isCurrent: true,
+    highlights: [
+      "Inventory specialist for supermarkets."
+    ],
+    chips: ["teamwork", "inventory management", "data accuracy"]
+  },{
+    tag: "release/2024.5",
+    company: "Hitachi",
     role: "Cloud and DevOps Engineer",
-    period: "11/2024 – Present",
+    period: "11/2024 – 06/2026",
+    duration: "1 year 7 months",
     location: "Paris, France",
     isCurrent: true,
     highlights: [
@@ -87,6 +100,7 @@ export const experiences = [
     company: "Qubit Pharmaceuticals",
     role: "DevOps Engineer Intern",
     period: "04/2024 – 09/2024",
+    duration: "6 months",
     location: "Paris, France",
     isCurrent: false,
     highlights: [
@@ -102,6 +116,7 @@ export const experiences = [
     company: "Fluwid Technologies",
     role: "Backend & Infrastructure Intern",
     period: "03/2023 – 08/2023",
+    duration: "6 months",
     location: "India",
     isCurrent: false,
     highlights: [
@@ -116,6 +131,7 @@ export const experiences = [
     company: "Brain Mentors Pvt. Ltd",
     role: "Software Developer",
     period: "01/2022 – 08/2022",
+    duration: "8 months",
     location: "India",
     isCurrent: false,
     highlights: [

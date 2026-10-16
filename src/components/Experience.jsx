@@ -6,9 +6,9 @@ export default function Experience() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">
-            <span className="idx">02</span> git log :: CAREER RELEASES
+            <span className="idx">02</span> kubectl get :: CAREER RELEASES
           </div>
-          <h2>Production releases and engineering history.</h2>
+          <h2>Deployment history across cloud, platform, and reliability engineering.</h2>
         </div>
 
         {/* Timeline */}
@@ -22,6 +22,7 @@ export default function Experience() {
                 <span className="release__tag">{exp.tag}</span>
                 <div className="release__co">{exp.company}</div>
                 <div className="release__period">{exp.period} • {exp.location}</div>
+                <div className="release__duration">{exp.duration} experience</div>
               </div>
 
               <div className="release__main">

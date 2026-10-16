@@ -212,85 +212,55 @@ export default function Hero() {
 
             <div className="status-strip">
               <div className="stat">
-                <span className="stat__k">Status</span>
+                <span className="stat__k">Cluster</span>
                 <span className="stat__v live">
                   <span className="dot" />
-                  {personalInfo.status}
+                  HEALTHY
                 </span>
               </div>
               <div className="stat">
-                <span className="stat__k">Location</span>
-                <span className="stat__v">{personalInfo.location}</span>
+                <span className="stat__k">Pipeline</span>
+                <span className="stat__v">PASSING</span>
               </div>
               <div className="stat">
-                <span className="stat__k">Coords</span>
-                <span className="stat__v">{personalInfo.latDeg}, {personalInfo.lonDeg}</span>
+                <span className="stat__k">Region</span>
+                <span className="stat__v">{personalInfo.location}</span>
               </div>
             </div>
           </div>
 
-          {/* Interactive SVG Git Release Graph */}
-          <div className="hero__graph" data-cursor="git tree">
-            <svg className="git" viewBox="0 0 380 400" fill="none">
-              {/* Main release branch line */}
-              <path d="M 90,40 L 90,360" className="g-line g-main" />
-
-              {/* Feature branch line */}
-              <path
-                d="M 90,100 C 90,140 190,130 190,180 L 190,260 C 190,300 90,290 90,330"
-                className="g-line g-branch"
-              />
-
-              {/* Animated pulse flow riding the branch */}
-              <path
-                d="M 90,100 C 90,140 190,130 190,180 L 190,260 C 190,300 90,290 90,330"
-                className="g-flow"
-              />
-
-              {/* Commit 1: Initial init */}
-              <g className="g-commit" data-cursor="commit: c0e1a9">
-                <circle cx="90" cy="80" r="7" className="g-c g-c--main" />
-                <text x="112" y="84" className="g-t g-t--dim">
-                  c0e1a9 init: terraform-aws-eks
-                </text>
-              </g>
-
-              {/* Commit 2: Checkout branch */}
-              <g className="g-commit" data-cursor="commit: f83b1d">
-                <circle cx="90" cy="115" r="7" className="g-c g-c--acc" />
-                <text x="112" y="119" className="g-t g-t--acc">
-                  f83b1d feat: gitlab-sast-pipeline
-                </text>
-              </g>
-
-              {/* Commit 3: Work on branch */}
-              <g className="g-commit" data-cursor="commit: e294b0">
-                <circle cx="190" cy="190" r="7" className="g-c g-c--acc" />
-                <text x="212" y="194" className="g-t g-t--acc">
-                  e294b0 harden: aws-waf-rbac
-                </text>
-              </g>
-
-              {/* Commit 4: Merge commit */}
-              <g className="g-commit" data-cursor="commit: 91a4c8">
-                <circle cx="90" cy="310" r="7" className="g-c g-c--main" />
-                <text x="112" y="314" className="g-t">
-                  91a4c8 merge: pr#42 production
-                </text>
-              </g>
-
-              {/* Deployed release tag HEAD */}
-              <g className="g-head" data-cursor="release tag">
-                <circle cx="90" cy="360" r="9.5" className="g-c g-c--acc" />
-                <circle cx="90" cy="360" r="16" className="g-ring" />
-                <g className="g-tag g-tag__in">
-                  <rect x="112" y="346" width="156" height="28" rx="14" />
-                  <text x="124" y="365">
-                    v2026.1 · DEPLOYED
-                  </text>
-                </g>
-              </g>
-            </svg>
+          <div className="hero__graph ops-panel" data-cursor="inspect cluster">
+            <div className="ops-panel__head">
+              <span className="mono">production / cluster-overview</span>
+              <span className="ops-panel__live"><span /> LIVE</span>
+            </div>
+            <div className="ops-panel__title">
+              <span className="ops-panel__icon">K8S</span>
+              <div>
+                <strong>cloud-platform</strong>
+                <span>eu-west-3 · production</span>
+              </div>
+            </div>
+            <div className="ops-panel__metrics">
+              <div><strong>08</strong><span>nodes ready</span></div>
+              <div><strong>42</strong><span>pods running</span></div>
+              <div><strong>99.99%</strong><span>availability</span></div>
+            </div>
+            <div className="ops-panel__pipeline">
+              <div className="ops-panel__pipeline-head">
+                <span>JENKINS / production-deploy</span>
+                <b>SUCCESS</b>
+              </div>
+              <div className="ops-panel__steps">
+                {['BUILD', 'TEST', 'SCAN', 'DEPLOY'].map((step) => (
+                  <span key={step}><i />{step}</span>
+                ))}
+              </div>
+            </div>
+            <div className="ops-panel__footer">
+              <span>docker image: platform-api:v2.6.1</span>
+              <span>rollout stable</span>
+            </div>
           </div>
         </div>
       </div>

@@ -25,9 +25,9 @@ export default function Skills() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">
-            <span className="idx">03</span> cat stack.yaml :: TOOLCHAIN & SPECIFICATION
+            <span className="idx">03</span> kubectl get stack :: TOOLCHAIN & SPECIFICATION
           </div>
-          <h2>Ecosystem specification and infrastructure stack.</h2>
+          <h2>The platform layers behind reliable delivery.</h2>
         </div>
 
         <div className="stack-stage">
